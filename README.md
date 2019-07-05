@@ -51,7 +51,7 @@ Build a local docker image
 
 Run the docker image and expose the port 53 of the container as 10053 on the host (You can expose port 53 if you want to) for TCP and UPD connections
 
-> `docker run -tid -p 10053:53 -p 10053:53/udp dns-proxy-server:0.1.0`
+> `docker run -tid -p 10053:50053 -p 10053:50053/udp dns-proxy-server:0.1.0`
 
 **How to test the DNS queries to the DNS proxy server**
 
