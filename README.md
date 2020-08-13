@@ -10,13 +10,13 @@ Because of the multithreaded implementation, the proxy server allows incoming re
 
 **Security concerns**
 
-The traffic between the client and the DNS Proxy is not encrypted, for that reason is highly recommended that the proxy server runs inside a DMZ protected zone and "closest" as possible to the client service to reduce the attack surface of a man in the middle attack.
+The traffic between the client and the DNS Proxy is not encrypted, because of that is highly recommended that the proxy server runs inside a DMZ protected zone and "closest" as possible to the client service to reduce the attack surface of a man in the middle attack.
 
 For testing purposes, the proxy has an optional parameter that allows ignoring the certificate verification. This can become a security issue if the proxy server connects to an untrusted DNS server. In a production environment, this is a bad practice.
 
 **Integrating to a distributed, microservices-oriented and containerized architecture**
 
-I believe that in a production container environment like Kubernetes the best approach is to use the dnsovertlsproxy container as a sidecar to the service(dns client) container. This way you can configure the service container to DNS resolve to the sidecar dnsovertlsproxy container so the DNS queries go through the sidecar assuring that all communication (inbound and outbound) exiting the pod to the DNS server is encrypted.
+I believe that in a production container environment like Kubernetes the best approach is to use the dnsovertlsproxy container as a sidecar to the service(dns client) container. You can configure the service container to DNS resolve to the sidecar dnsovertlsproxy container so the DNS queries go through the sidecar assuring that all communication (inbound and outbound) exiting the pod to the DNS server is encrypted.
 
 It also makes harder to an attacker to sniff/spoof the communication between the service and the dnsovertlsproxy since the exposed surface is inside the POD.
 
